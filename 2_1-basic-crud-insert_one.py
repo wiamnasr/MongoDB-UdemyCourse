@@ -25,4 +25,20 @@ mylist = [{"first_name": "Wiam", "last_name": "Nasr", "age": 31, "history": [{"d
 y = patientscollection.insert_many(mylist)
 
 # print(mydb)
-print(y)
+print(patientscollection.find())
+
+
+# Updating the patients collection in the hospital database, where the first name is Wiam, changing the name, age and history to new values
+# For now overwriting the old history list with a new list
+updatedPatientsCollection = patientscollection.update_one({"first_name": "Wiam"}, {"$set": {"last_name":"Nasrr", "age": 31.3, "history": [{"disease": "headache", "treatment": 54}]}})
+
+print(updatedPatientsCollection)
+
+
+# Finding all patients older than 30:
+olderthan30 = patientscollection.find({"age": {"$gt": 30}})
+
+print(olderthan30)
+
+# Deleting all the patients who have had a cold
+patientswithcold = patientscollection.delete_many({"history.disease": "cold"})
