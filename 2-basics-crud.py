@@ -1,4 +1,6 @@
-# SOURCE: https://www.w3schools.com/python/python_mongodb_insert.asp
+# SOURCES:
+# https://www.mongodb.com/docs/
+# https://www.w3schools.com/python/python_mongodb_insert.asp
 
 import pymongo
 
