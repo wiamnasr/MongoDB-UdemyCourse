@@ -20,3 +20,13 @@
 
 
 <hr />
+
+
+
+Understanding Relations and references:
+
+    One to one relations - Embedded
+
+    e.g. when talking about the summary for a patient in hospital, its one to one as each summary belongs to one patient and vice versa
+
+    db.patients
