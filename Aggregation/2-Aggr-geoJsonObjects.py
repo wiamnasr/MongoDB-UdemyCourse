@@ -16,8 +16,8 @@ customerscollection = mydb["customers"]
 customerscollection.aggregate([
     # Adding an extra project stage before the one from before
     # note that excluding the _id here in the first project stage will make it unavailable in the next stage (following project)
-    {"$project": {"_id": 0, "name": 1, "email": 1, "location": { "type": "point", "coordinates": ["$location.coordinates.longitude", "$location.coordinates.latitude"]}}},
-    { "$project": { "gender": 1, "email": 1, "location": 1, "fullName": {"$concat": [
+    {"$project": {"_id": 0, "name": 1, "email": 1, "birthdate": {"$convert": {"input": "$dob.date", "to": "date"}}, "age": "$dob.age" ,"location": {"type": "point", "coordinates": [{"$convert": {"input": '$location.coordinates.longitude', "to": 'double', "onError": 0.0, "onNull": 0.0}}, {"$convert": {"input": '$location.coordinates.latitude', "to": 'double', "onError": 0.0, "onNull": 0.0}}]}}},
+    { "$project": { "gender": 1, "email": 1, "location": 1, "birthdate":1, "age": 1 ,"fullName": {"$concat": [
         { "$toUpper": {"$substrCP": ['$name.first', 0, 1]}},
         {"$substCP": ['$name.first', 1, {"$subtract": [{"$strLenCP": "$name.first"}, 1]}]},
         ' ',
